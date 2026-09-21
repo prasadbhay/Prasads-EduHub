@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Notes | PRASAD'S EDUHUB</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: #f6f8fc;
+      color: #172033;
+    }
+
+    /* NAVBAR */
+
+    nav {
+      height: 72px;
+      background: #ffffff;
+      border-bottom: 1px solid #e7eaf0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 7%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      color: #111827;
+    }
+
+    .logo span {
+      color: #2563eb;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #4b5563;
+      font-size: 15px;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #2563eb;
+    }
+
+    .start-btn {
+      background: #2563eb;
+      color: white !important;
+      padding: 11px 20px;
+      border-radius: 10px;
+    }
+
+    /* HERO */
+
+    .hero {
+      background:
+        radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.10), transparent 30%),
+        radial-gradient(circle at 90% 80%, rgba(124, 58, 237, 0.10), transparent 30%),
+        #ffffff;
+      padding: 65px 7% 55px;
+    }
+
+    .hero-content {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #eef4ff;
+      color: #2563eb;
+      padding: 8px 14px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.7px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(35px, 5vw, 58px);
+      line-height: 1.08;
+      letter-spacing: -1.5px;
+      margin-bottom: 16px;
+    }
+
+    h1 span {
+      color: #2563eb;
+    }
+
+    .hero p {
+      max-width: 700px;
+      color: #667085;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    /* SEARCH */
+
+    .search-box {
+      margin-top: 30px;
+      max-width: 700px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .search-box input {
+      flex: 1;
+      height: 52px;
+      border: 1px solid #dce1ea;
+      border-radius: 12px;
+      padding: 0 17px;
+      outline: none;
+      font-size: 15px;
+      background: white;
+    }
+
+    .search-box input:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
+    }
+
+    .search-btn {
+      border: none;
+      background: #2563eb;
+      color: white;
+      padding: 0 24px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* MAIN */
+
+    .main {
+      max-width: 1200px;
+      margin: auto;
+      padding: 55px 7%;
+    }
+
+    .heading {
+      margin-bottom: 28px;
+    }
+
+    .heading h2 {
+      font-size: 29px;
+      margin-bottom: 7px;
+    }
+
+    .heading p {
+      color: #667085;
+      font-size: 14px;
+    }
+
+    /* MATERIAL GRID */
+
+    .material-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .material-card {
+      background: white;
+      border: 1px solid #e5e9f0;
+      border-radius: 16px;
+      padding: 24px;
+      transition: 0.25s ease;
+    }
+
+    .material-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(20, 30, 50, 0.08);
+      border-color: #d3ddf5;
+    }
+
+    .icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 13px;
+      background: #eef4ff;
+      color: #2563eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 23px;
+      margin-bottom: 18px;
+    }
+
+    .material-card h3 {
+      font-size: 18px;
+      margin-bottom: 9px;
+    }
+
+    .material-card p {
+      color: #667085;
+      font-size: 13px;
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    .free-tag {
+      display: inline-block;
+      color: #15803d;
+      background: #ecfdf3;
+      padding: 6px 9px;
+      border-radius: 6px;
+      font-size: 10px;
+      font-weight: 800;
+      margin-bottom: 15px;
+    }
+
+    .material-btn {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      background: #111827;
+      color: white;
+      padding: 11px;
+      border-radius: 9px;
+      font-size: 13px;
+      font-weight: 700;
+      transition: 0.2s;
+    }
+
+    .material-btn:hover {
+      background: #2563eb;
+    }
+
+    /* FREE ACCESS */
+
+    .free-access {
+      margin-top: 55px;
+      padding: 38px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #111827, #1e3a8a);
+      color: white;
+      text-align: center;
+    }
+
+    .free-access .big-icon {
+      font-size: 35px;
+      margin-bottom: 10px;
+    }
+
+    .free-access h2 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .free-access p {
+      max-width: 650px;
+      margin: auto;
+      color: #dbe4ff;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    /* QUICK LINKS */
+
+    .quick-section {
+      margin-top: 55px;
+    }
+
+    .quick-section h2 {
+      font-size: 26px;
+      margin-bottom: 22px;
+    }
+
+    .quick-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .quick-card {
+      background: white;
+      border: 1px solid #e5e9f0;
+      border-radius: 14px;
+      padding: 20px;
+    }
+
+    .quick-card h3 {
+      font-size: 16px;
+      margin-bottom: 7px;
+    }
+
+    .quick-card p {
+      color: #667085;
+      font-size: 13px;
+      line-height: 1.5;
+      margin-bottom: 14px;
+    }
+
+    .quick-card a {
+      color: #2563eb;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    /* FOOTER */
+
+    footer {
+      margin-top: 30px;
+      background: white;
+      border-top: 1px solid #e7eaf0;
+      text-align: center;
+      padding: 28px 20px;
+      color: #7b8494;
+      font-size: 13px;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 900px) {
+
+      .material-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .quick-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .nav-links {
+        gap: 15px;
+      }
+    }
+
+    @media (max-width: 650px) {
+
+      nav {
+        padding: 0 5%;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 45px 5% 40px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .search-box {
+        flex-direction: column;
+      }
+
+      .search-box input {
+        height: 50px;
+      }
+
+      .search-btn {
+        height: 48px;
+      }
+
+      .main {
+        padding: 40px 5%;
+      }
+
+      .material-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .quick-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .free-access {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+
+    <div class="logo">
+      PRASAD'S <span>EDUHUB</span>
+    </div>
+
+    <div class="nav-links">
+
+      <a href="index.html">Home</a>
+
+      <a href="courses.html">Courses</a>
+
+      <a href="lectures.html">Lectures</a>
+
+      <a href="notes.html">Notes</a>
+
+      <a href="courses.html" class="start-btn">
+        Start Learning
+      </a>
+
+    </div>
+
+  </nav>
+
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <div class="badge" id="examBadge">
+        UPSC • FREE STUDY MATERIAL
+      </div>
+
+      <h1>
+        Study Smarter with
+        <span>Free Notes.</span>
+      </h1>
+
+      <p id="heroText">
+        Access useful study resources, revision material,
+        previous year questions and exam preparation content
+        — completely free for everyone.
+      </p>
+
+      <div class="search-box">
+
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search study material..."
+        >
+
+        <button
+          class="search-btn"
+          onclick="searchMaterial()"
+        >
+          Search
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MAIN -->
+
+  <main class="main">
+
+    <div class="heading">
+
+      <h2 id="subjectTitle">
+        General Studies
+      </h2>
+
+      <p id="subjectDescription">
+        Choose the type of study material you want to explore.
+      </p>
+
+    </div>
+
+
+    <!-- MATERIAL CARDS -->
+
+    <div class="material-grid" id="materialGrid">
+
+
+      <!-- NOTES -->
+
+      <div class="material-card">
+
+        <div class="icon">
+          📚
+        </div>
+
+        <span class="free-tag">
+          FREE ACCESS
+        </span>
+
+        <h3>
+          Class Notes
+        </h3>
+
+        <p>
+          Simple and organized notes covering important
+          concepts and topics for your examination.
+        </p>
+
+        <a href="#" class="material-btn">
+          View Notes
+        </a>
+
+      </div>
+
+
+      <!-- PYQ -->
+
+      <div class="material-card">
+
+        <div class="icon">
+          📝
+        </div>
+
+        <span class="free-tag">
+          FREE ACCESS
+        </span>
+
+        <h3>
+          Previous Year Questions
+        </h3>
+
+        <p>
+          Practice previous year questions and understand
+          the type and level of questions asked.
+        </p>
+
+        <a href="#" class="material-btn">
+          View PYQs
+        </a>
+
+      </div>
+
+
+      <!-- REVISION -->
+
+      <div class="material-card">
+
+        <div class="icon">
+          ⚡
+        </div>
+
+        <span class="free-tag">
+          FREE ACCESS
+        </span>
+
+        <h3>
+          Quick Revision
+        </h3>
+
+        <p>
+          Short revision material to quickly revise
+          important concepts before the examination.
+        </p>
+
+        <a href="#" class="material-btn">
+          Start Revision
+        </a>
+
+      </div>
+
+
+      <!-- SYLLABUS -->
+
+      <div class="material-card">
+
+        <div class="icon">
+          📋
+        </div>
+
+        <span class="free-tag">
+          FREE ACCESS
+        </span>
+
+        <h3>
+          Syllabus
+        </h3>
+
+        <p>
+          Understand the complete syllabus and organize
+          your preparation topic by topic.
+        </p>
+
+        <a href="#" class="material-btn">
+          View Syllabus
+        </a>
+
+      </div>
+
+
+      <!-- IMPORTANT TOPICS -->
+
+      <div class="material-card">
+
+        <div class="icon">
+          ⭐
+        </div>
+
+        <span class="free-tag">
+          FREE ACCESS
+        </span>
+
+        <h3>
+          Important Topics
+        </h3>
+
+        <p>
+          Focus on important areas that deserve special
+          attention during your preparation.
+        </p>
+
+        <a href="#" class="material-btn">
+          Explore Topics
+        </a>
+
+      </div>
+
+
+      <!-- PRACTICE -->
+
+      <div class="material-card">
+
+        <div class="icon">
+          🧠
+        </div>
+
+        <span class="free-tag">
+          FREE ACCESS
+        </span>
+
+        <h3>
+          Practice Material
+        </h3>
+
+        <p>
+          Strengthen your preparation with practice
+          questions and topic-based exercises.
+        </p>
+
+        <a href="#" class="material-btn">
+          Practice Now
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- FREE ACCESS BANNER -->
+
+    <section class="free-access">
+
+      <div class="big-icon">
+        🎓
+      </div>
+
+      <h2>
+        Education Should Be Accessible.
+      </h2>
+
+      <p>
+        PRASAD'S EDUHUB is built with a simple idea:
+        useful preparation resources should be accessible
+        to every student. No login. No subscription.
+        No paywall.
+      </p>
+
+    </section>
+
+
+    <!-- QUICK ACCESS -->
+
+    <section class="quick-section">
+
+      <h2>
+        Explore More
+      </h2>
+
+      <div class="quick-grid">
+
+        <div class="quick-card">
+
+          <h3>
+            🎥 Video Lectures
+          </h3>
+
+          <p>
+            Explore lecture resources for your selected
+            exam and subject.
+          </p>
+
+          <a href="lectures.html">
+            Explore Lectures →
+          </a>
+
+        </div>
+
+
+        <div class="quick-card">
+
+          <h3>
+            🎯 Exam Courses
+          </h3>
+
+          <p>
+            Choose UPSC, MPSC or Banking preparation
+            from the main course section.
+          </p>
+
+          <a href="courses.html">
+            View Courses →
+          </a>
+
+        </div>
+
+
+        <div class="quick-card">
+
+          <h3>
+            🏠 EDUHUB Home
+          </h3>
+
+          <p>
+            Return to the main PRASAD'S EDUHUB
+            learning platform.
+          </p>
+
+          <a href="index.html">
+            Go Home →
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    © 2026 PRASAD'S EDUHUB.
+    One Hub. Every Exam. Free for Everyone.
+
+  </footer>
+
+
+  <!-- JAVASCRIPT -->
+
+  <script>
+
+    /* GET URL PARAMETERS */
+
+    const params = new URLSearchParams(window.location.search);
+
+    const exam = params.get("exam") || "UPSC";
+
+    const subject = params.get("subject") || "General Studies";
+
+
+    /* UPDATE PAGE */
+
+    document.getElementById("examBadge").innerText =
+      exam.toUpperCase() + " • FREE STUDY MATERIAL";
+
+
+    document.getElementById("subjectTitle").innerText =
+      subject + " Study Material";
+
+
+    document.getElementById("heroText").innerText =
+      "Access free " +
+      subject +
+      " study resources for " +
+      exam +
+      " preparation. Learn, revise and practice without any paywall.";
+
+
+    document.getElementById("subjectDescription").innerText =
+      "Free preparation resources for " +
+      subject +
+      " — " +
+      exam +
+      ".";
+
+
+    /* SEARCH */
+
+    function searchMaterial() {
+
+      const input =
+        document.getElementById("searchInput").value.trim();
+
+      if (input === "") {
+        alert("Please enter something to search.");
+        return;
+      }
+
+      const query =
+        exam + " " + subject + " " + input;
+
+      const url =
+        "https://www.google.com/search?q=" +
+        encodeURIComponent(query);
+
+      window.open(url, "_blank");
+
+    }
+
+
+    /* ENTER KEY */
+
+    document
+      .getElementById("searchInput")
+      .addEventListener("keydown", function(event) {
+
+        if (event.key === "Enter") {
+          searchMaterial();
+        }
+
+      });
+
+  </script>
+
+</body>
+</html>

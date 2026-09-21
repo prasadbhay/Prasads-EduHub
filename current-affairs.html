@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Current Affairs | PRASAD'S EDUHUB</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: #f6f8fc;
+      color: #172033;
+    }
+
+    nav {
+      height: 72px;
+      background: #fff;
+      border-bottom: 1px solid #e7eaf0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 7%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      color: #111827;
+    }
+
+    .logo span {
+      color: #2563eb;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #4b5563;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: #2563eb;
+    }
+
+    .start-btn {
+      background: #2563eb;
+      color: white !important;
+      padding: 11px 19px;
+      border-radius: 10px;
+    }
+
+    .hero {
+      padding: 65px 7% 55px;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(37,99,235,.10), transparent 30%),
+        radial-gradient(circle at 90% 80%, rgba(124,58,237,.10), transparent 30%),
+        #fff;
+    }
+
+    .hero-content {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #eef4ff;
+      color: #2563eb;
+      padding: 8px 14px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .6px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(36px, 5vw, 58px);
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 15px;
+    }
+
+    h1 span {
+      color: #2563eb;
+    }
+
+    .hero p {
+      max-width: 700px;
+      color: #667085;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .main {
+      max-width: 1150px;
+      margin: auto;
+      padding: 45px 7% 70px;
+    }
+
+    .top-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+
+    .top-section h2 {
+      font-size: 28px;
+      margin-bottom: 6px;
+    }
+
+    .top-section p {
+      color: #667085;
+      font-size: 14px;
+    }
+
+    .search-box {
+      width: 280px;
+      padding: 13px 15px;
+      border: 1px solid #dfe4ec;
+      border-radius: 10px;
+      outline: none;
+      font-size: 14px;
+    }
+
+    .search-box:focus {
+      border-color: #2563eb;
+    }
+
+    .category-bar {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+    }
+
+    .category {
+      border: 1px solid #dfe4ec;
+      background: white;
+      padding: 10px 16px;
+      border-radius: 30px;
+      cursor: pointer;
+      white-space: nowrap;
+      font-size: 13px;
+      font-weight: 700;
+      color: #475467;
+    }
+
+    .category.active,
+    .category:hover {
+      background: #2563eb;
+      border-color: #2563eb;
+      color: white;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .news-card {
+      background: white;
+      border: 1px solid #e5e9f0;
+      border-radius: 17px;
+      padding: 23px;
+      transition: .25s;
+    }
+
+    .news-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 35px rgba(20,30,50,.08);
+    }
+
+    .news-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 13px;
+      background: #eef4ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 17px;
+    }
+
+    .news-tag {
+      display: inline-block;
+      background: #f1f5f9;
+      color: #475467;
+      padding: 5px 9px;
+      border-radius: 6px;
+      font-size: 10px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .news-card h3 {
+      font-size: 18px;
+      line-height: 1.4;
+      margin-bottom: 9px;
+    }
+
+    .news-card p {
+      color: #667085;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .read-btn {
+      display: inline-block;
+      margin-top: 17px;
+      text-decoration: none;
+      color: #2563eb;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .monthly-box {
+      margin-top: 45px;
+      padding: 32px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #111827, #1e3a8a);
+      color: white;
+      text-align: center;
+    }
+
+    .monthly-box h2 {
+      margin-bottom: 10px;
+      font-size: 27px;
+    }
+
+    .monthly-box p {
+      color: #dbe4ff;
+      max-width: 680px;
+      margin: auto;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .monthly-btn {
+      display: inline-block;
+      margin-top: 20px;
+      background: white;
+      color: #1e3a8a;
+      padding: 12px 21px;
+      border-radius: 9px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    footer {
+      background: white;
+      border-top: 1px solid #e7eaf0;
+      text-align: center;
+      padding: 28px 20px;
+      color: #7b8494;
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .top-section {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .search-box {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        padding: 0 5%;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 45px 5%;
+      }
+
+      .main {
+        padding: 35px 5% 55px;
+      }
+
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .monthly-box {
+        padding: 28px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+
+    <div class="logo">
+      PRASAD'S <span>EDUHUB</span>
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="courses.html">Courses</a>
+      <a href="lectures.html">Lectures</a>
+      <a href="notes.html">Notes</a>
+      <a href="quiz.html">MCQ Quiz</a>
+      <a href="courses.html" class="start-btn">Start Learning</a>
+    </div>
+
+  </nav>
+
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <div class="badge">
+        DAILY • WEEKLY • MONTHLY
+      </div>
+
+      <h1>
+        Stay Updated with
+        <span>Current Affairs.</span>
+      </h1>
+
+      <p>
+        Keep your preparation connected with important national,
+        international, economic, science and government-related
+        developments.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <main class="main">
+
+    <div class="top-section">
+
+      <div>
+        <h2>Current Affairs Hub</h2>
+        <p>
+          Exam-oriented categories for UPSC, MPSC and Banking preparation.
+        </p>
+      </div>
+
+      <input
+        type="text"
+        class="search-box"
+        id="searchBox"
+        placeholder="Search current affairs..."
+        onkeyup="searchNews()"
+      >
+
+    </div>
+
+
+    <div class="category-bar">
+
+      <button class="category active" onclick="filterNews('All', this)">
+        All
+      </button>
+
+      <button class="category" onclick="filterNews('National', this)">
+        National
+      </button>
+
+      <button class="category" onclick="filterNews('International', this)">
+        International
+      </button>
+
+      <button class="category" onclick="filterNews('Economy', this)">
+        Economy
+      </button>
+
+      <button class="category" onclick="filterNews('Science', this)">
+        Science & Tech
+      </button>
+
+      <button class="category" onclick="filterNews('Maharashtra', this)">
+        Maharashtra
+      </button>
+
+    </div>
+
+
+    <div class="news-grid" id="newsGrid">
+
+      <article class="news-card" data-category="National">
+
+        <div class="news-icon">🇮🇳</div>
+
+        <span class="news-tag">NATIONAL</span>
+
+        <h3>
+          Government & National Developments
+        </h3>
+
+        <p>
+          Important government schemes, policies, committees,
+          appointments and national developments.
+        </p>
+
+        <a href="#" class="read-btn">
+          Read Updates →
+        </a>
+
+      </article>
+
+
+      <article class="news-card" data-category="International">
+
+        <div class="news-icon">🌍</div>
+
+        <span class="news-tag">INTERNATIONAL</span>
+
+        <h3>
+          International Affairs
+        </h3>
+
+        <p>
+          Important international events, organizations,
+          summits, agreements and global developments.
+        </p>
+
+        <a href="#" class="read-btn">
+          Read Updates →
+        </a>
+
+      </article>
+
+
+      <article class="news-card" data-category="Economy">
+
+        <div class="news-icon">💰</div>
+
+        <span class="news-tag">ECONOMY</span>
+
+        <h3>
+          Economy & Banking
+        </h3>
+
+        <p>
+          RBI updates, monetary policy, banking developments,
+          markets and important economic indicators.
+        </p>
+
+        <a href="#" class="read-btn">
+          Read Updates →
+        </a>
+
+      </article>
+
+
+      <article class="news-card" data-category="Science">
+
+        <div class="news-icon">🚀</div>
+
+        <span class="news-tag">SCIENCE & TECH</span>
+
+        <h3>
+          Science & Technology
+        </h3>
+
+        <p>
+          Space missions, AI, technology, defence technology
+          and major scientific developments.
+        </p>
+
+        <a href="#" class="read-btn">
+          Read Updates →
+        </a>
+
+      </article>
+
+
+      <article class="news-card" data-category="Maharashtra">
+
+        <div class="news-icon">🏛️</div>
+
+        <span class="news-tag">MAHARASHTRA</span>
+
+        <h3>
+          Maharashtra Current Affairs
+        </h3>
+
+        <p>
+          Important Maharashtra government decisions,
+          schemes, appointments and state-level developments.
+        </p>
+
+        <a href="#" class="read-btn">
+          Read Updates →
+        </a>
+
+      </article>
+
+
+      <article class="news-card" data-category="National">
+
+        <div class="news-icon">📚</div>
+
+        <span class="news-tag">EXAM FOCUS</span>
+
+        <h3>
+          Important Facts for Exams
+        </h3>
+
+        <p>
+          Important facts, awards, reports, indexes, books,
+          personalities and events useful for competitive exams.
+        </p>
+
+        <a href="#" class="read-btn">
+          Read Updates →
+        </a>
+
+      </article>
+
+    </div>
+
+
+    <section class="monthly-box">
+
+      <h2>
+        Monthly Current Affairs
+      </h2>
+
+      <p>
+        Organize your revision month-wise and create a strong
+        current affairs base for UPSC, MPSC and Banking exams.
+      </p>
+
+      <a href="#" class="monthly-btn">
+        Coming Soon
+      </a>
+
+    </section>
+
+  </main>
+
+
+  <footer>
+
+    © 2026 PRASAD'S EDUHUB.
+    One Hub. Every Exam. Free for Everyone.
+
+  </footer>
+
+
+  <script>
+
+    let currentCategory = "All";
+
+
+    function filterNews(category, button) {
+
+      currentCategory = category;
+
+      document
+        .querySelectorAll(".category")
+        .forEach(btn => btn.classList.remove("active"));
+
+      button.classList.add("active");
+
+      applyFilters();
+
+    }
+
+
+    function searchNews() {
+
+      applyFilters();
+
+    }
+
+
+    function applyFilters() {
+
+      const search =
+        document
+          .getElementById("searchBox")
+          .value
+          .toLowerCase();
+
+      const cards =
+        document.querySelectorAll(".news-card");
+
+
+      cards.forEach(card => {
+
+        const category =
+          card.dataset.category;
+
+        const text =
+          card.innerText.toLowerCase();
+
+        const categoryMatch =
+          currentCategory === "All" ||
+          category === currentCategory;
+
+        const searchMatch =
+          text.includes(search);
+
+        if (categoryMatch && searchMatch) {
+
+          card.style.display = "block";
+
+        } else {
+
+          card.style.display = "none";
+
+        }
+
+      });
+
+    }
+
+  </script>
+
+</body>
+</html>

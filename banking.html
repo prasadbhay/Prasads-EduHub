@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Banking | PRASAD'S EDUHUB</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: #f6f8fc;
+      color: #172033;
+    }
+
+    /* NAVBAR */
+
+    nav {
+      height: 72px;
+      background: #ffffff;
+      border-bottom: 1px solid #e7eaf0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 7%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      color: #111827;
+    }
+
+    .logo span {
+      color: #2563eb;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #4b5563;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: #2563eb;
+    }
+
+    .start-btn {
+      background: #2563eb;
+      color: white !important;
+      padding: 11px 20px;
+      border-radius: 10px;
+    }
+
+    /* HERO */
+
+    .hero {
+      padding: 70px 7% 60px;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.10), transparent 30%),
+        radial-gradient(circle at 90% 80%, rgba(124, 58, 237, 0.10), transparent 30%),
+        #ffffff;
+    }
+
+    .hero-content {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #eef4ff;
+      color: #2563eb;
+      padding: 8px 14px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.7px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(36px, 5vw, 60px);
+      line-height: 1.08;
+      letter-spacing: -1.8px;
+      margin-bottom: 16px;
+    }
+
+    h1 span {
+      color: #2563eb;
+    }
+
+    .hero p {
+      max-width: 700px;
+      color: #667085;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    /* MAIN */
+
+    .main {
+      max-width: 1200px;
+      margin: auto;
+      padding: 55px 7%;
+    }
+
+    .section-heading {
+      margin-bottom: 30px;
+    }
+
+    .section-heading h2 {
+      font-size: 30px;
+      margin-bottom: 7px;
+    }
+
+    .section-heading p {
+      color: #667085;
+      font-size: 14px;
+    }
+
+    /* SUBJECT GRID */
+
+    .subject-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .subject-card {
+      background: white;
+      border: 1px solid #e5e9f0;
+      border-radius: 17px;
+      padding: 24px;
+      transition: 0.25s ease;
+    }
+
+    .subject-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(20, 30, 50, 0.08);
+      border-color: #d2dcf5;
+    }
+
+    .subject-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: #eef4ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 23px;
+      margin-bottom: 18px;
+    }
+
+    .subject-card h3 {
+      font-size: 19px;
+      margin-bottom: 9px;
+    }
+
+    .subject-card p {
+      color: #667085;
+      font-size: 13px;
+      line-height: 1.6;
+      min-height: 42px;
+      margin-bottom: 18px;
+    }
+
+    /* BUTTONS */
+
+    .action-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 9px;
+    }
+
+    .action-btn {
+      text-decoration: none;
+      text-align: center;
+      padding: 10px 7px;
+      border-radius: 9px;
+      font-size: 12px;
+      font-weight: 700;
+      transition: 0.2s;
+    }
+
+    .lecture-btn {
+      background: #111827;
+      color: white;
+    }
+
+    .lecture-btn:hover {
+      background: #2563eb;
+    }
+
+    .notes-btn {
+      background: #eef4ff;
+      color: #2563eb;
+    }
+
+    .notes-btn:hover {
+      background: #dfeaff;
+    }
+
+    /* INFO */
+
+    .info-box {
+      margin-top: 55px;
+      padding: 32px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #111827, #1e3a8a);
+      color: white;
+      text-align: center;
+    }
+
+    .info-box h2 {
+      font-size: 27px;
+      margin-bottom: 10px;
+    }
+
+    .info-box p {
+      max-width: 680px;
+      margin: auto;
+      color: #dbe4ff;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    /* FOOTER */
+
+    footer {
+      margin-top: 25px;
+      background: white;
+      border-top: 1px solid #e7eaf0;
+      text-align: center;
+      padding: 28px 20px;
+      color: #7b8494;
+      font-size: 13px;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 950px) {
+
+      .subject-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .nav-links {
+        gap: 15px;
+      }
+    }
+
+    @media (max-width: 650px) {
+
+      nav {
+        padding: 0 5%;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 45px 5%;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .main {
+        padding: 40px 5%;
+      }
+
+      .subject-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .action-buttons {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .info-box {
+        padding: 28px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+
+    <div class="logo">
+      PRASAD'S <span>EDUHUB</span>
+    </div>
+
+    <div class="nav-links">
+
+      <a href="index.html">Home</a>
+
+      <a href="courses.html">Courses</a>
+
+      <a href="lectures.html">Lectures</a>
+
+      <a href="notes.html">Notes</a>
+
+      <a href="courses.html" class="start-btn">
+        Start Learning
+      </a>
+
+    </div>
+
+  </nav>
+
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <div class="badge">
+        BANKING • IBPS • SBI • RBI
+      </div>
+
+      <h1>
+        Prepare Smart for
+        <span>Banking.</span>
+      </h1>
+
+      <p>
+        Build your Banking exam preparation with subject-wise
+        lectures, free study material, practice resources and
+        revision content.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- MAIN -->
+
+  <main class="main">
+
+    <div class="section-heading">
+
+      <h2>
+        Banking Subjects
+      </h2>
+
+      <p>
+        Select a subject and choose between video lectures
+        or free study material.
+      </p>
+
+    </div>
+
+
+    <div class="subject-grid">
+
+
+      <!-- QUANT -->
+
+      <div class="subject-card">
+
+        <div class="subject-icon">
+          🔢
+        </div>
+
+        <h3>
+          Quantitative Aptitude
+        </h3>
+
+        <p>
+          Arithmetic, percentages, averages, profit-loss,
+          DI and other quantitative concepts.
+        </p>
+
+        <div class="action-buttons">
+
+          <a
+            href="lectures.html?exam=Banking&subject=Quantitative%20Aptitude"
+            class="action-btn lecture-btn"
+          >
+            🎥 Lectures
+          </a>
+
+          <a
+            href="notes.html?exam=Banking&subject=Quantitative%20Aptitude"
+            class="action-btn notes-btn"
+          >
+            📚 Notes
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- REASONING -->
+
+      <div class="subject-card">
+
+        <div class="subject-icon">
+          🧩
+        </div>
+
+        <h3>
+          Reasoning
+        </h3>
+
+        <p>
+          Puzzles, seating arrangement, syllogism, coding-decoding
+          and logical reasoning.
+        </p>
+
+        <div class="action-buttons">
+
+          <a
+            href="lectures.html?exam=Banking&subject=Reasoning"
+            class="action-btn lecture-btn"
+          >
+            🎥 Lectures
+          </a>
+
+          <a
+            href="notes.html?exam=Banking&subject=Reasoning"
+            class="action-btn notes-btn"
+          >
+            📚 Notes
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- ENGLISH -->
+
+      <div class="subject-card">
+
+        <div class="subject-icon">
+          🔤
+        </div>
+
+        <h3>
+          English
+        </h3>
+
+        <p>
+          Grammar, vocabulary, reading comprehension and
+          English language practice.
+        </p>
+
+        <div class="action-buttons">
+
+          <a
+            href="lectures.html?exam=Banking&subject=English"
+            class="action-btn lecture-btn"
+          >
+            🎥 Lectures
+          </a>
+
+          <a
+            href="notes.html?exam=Banking&subject=English"
+            class="action-btn notes-btn"
+          >
+            📚 Notes
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- BANKING AWARENESS -->
+
+      <div class="subject-card">
+
+        <div class="subject-icon">
+          🏦
+        </div>
+
+        <h3>
+          Banking Awareness
+        </h3>
+
+        <p>
+          Banking basics, RBI, financial systems and important
+          banking terminology.
+        </p>
+
+        <div class="action-buttons">
+
+          <a
+            href="lectures.html?exam=Banking&subject=Banking%20Awareness"
+            class="action-btn lecture-btn"
+          >
+            🎥 Lectures
+          </a>
+
+          <a
+            href="notes.html?exam=Banking&subject=Banking%20Awareness"
+            class="action-btn notes-btn"
+          >
+            📚 Notes
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- CURRENT AFFAIRS -->
+
+      <div class="subject-card">
+
+        <div class="subject-icon">
+          📰
+        </div>
+
+        <h3>
+          Current Affairs
+        </h3>
+
+        <p>
+          Important national, international and financial
+          developments for banking examinations.
+        </p>
+
+        <div class="action-buttons">
+
+          <a
+            href="lectures.html?exam=Banking&subject=Current%20Affairs"
+            class="action-btn lecture-btn"
+          >
+            🎥 Lectures
+          </a>
+
+          <a
+            href="notes.html?exam=Banking&subject=Current%20Affairs"
+            class="action-btn notes-btn"
+          >
+            📚 Notes
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- COMPUTER -->
+
+      <div class="subject-card">
+
+        <div class="subject-icon">
+          💻
+        </div>
+
+        <h3>
+          Computer Awareness
+        </h3>
+
+        <p>
+          Computer fundamentals, internet, networking and
+          basic digital awareness.
+        </p>
+
+        <div class="action-buttons">
+
+          <a
+            href="lectures.html?exam=Banking&subject=Computer%20Awareness"
+            class="action-btn lecture-btn"
+          >
+            🎥 Lectures
+          </a>
+
+          <a
+            href="notes.html?exam=Banking&subject=Computer%20Awareness"
+            class="action-btn notes-btn"
+          >
+            📚 Notes
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- GENERAL AWARENESS -->
+
+      <div class="subject-card">
+
+        <div class="subject-icon">
+          🌐
+        </div>
+
+        <h3>
+          General Awareness
+        </h3>
+
+        <p>
+          General knowledge, important events and
+          examination-oriented awareness.
+        </p>
+
+        <div class="action-buttons">
+
+          <a
+            href="lectures.html?exam=Banking&subject=General%20Awareness"
+            class="action-btn lecture-btn"
+          >
+            🎥 Lectures
+          </a>
+
+          <a
+            href="notes.html?exam=Banking&subject=General%20Awareness"
+            class="action-btn notes-btn"
+          >
+            📚 Notes
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- STATIC GK -->
+
+      <div class="subject-card">
+
+        <div class="subject-icon">
+          📖
+        </div>
+
+        <h3>
+          Static GK
+        </h3>
+
+        <p>
+          Important facts, places, organizations, awards,
+          books and static general knowledge.
+        </p>
+
+        <div class="action-buttons">
+
+          <a
+            href="lectures.html?exam=Banking&subject=Static%20GK"
+            class="action-btn lecture-btn"
+          >
+            🎥 Lectures
+          </a>
+
+          <a
+            href="notes.html?exam=Banking&subject=Static%20GK"
+            class="action-btn notes-btn"
+          >
+            📚 Notes
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- MOCK TEST -->
+
+      <div class="subject-card">
+
+        <div class="subject-icon">
+          📝
+        </div>
+
+        <h3>
+          Mock Test
+        </h3>
+
+        <p>
+          Practice exam-style questions and improve your
+          speed, accuracy and preparation.
+        </p>
+
+        <div class="action-buttons">
+
+          <a
+            href="lectures.html?exam=Banking&subject=Mock%20Test"
+            class="action-btn lecture-btn"
+          >
+            🎥 Lectures
+          </a>
+
+          <a
+            href="notes.html?exam=Banking&subject=Mock%20Test"
+            class="action-btn notes-btn"
+          >
+            📚 Notes
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- INFO -->
+
+    <section class="info-box">
+
+      <h2>
+        Banking Preparation. One Free Hub.
+      </h2>
+
+      <p>
+        Prepare for IBPS, SBI and RBI-related examinations
+        with organized subjects, lectures and study resources
+        through PRASAD'S EDUHUB — free for everyone.
+      </p>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    © 2026 PRASAD'S EDUHUB.
+    One Hub. Every Exam. Free for Everyone.
+
+  </footer>
+
+</body>
+</html>

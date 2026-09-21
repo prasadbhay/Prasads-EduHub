@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>MCQ Quiz | PRASAD'S EDUHUB</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: #f6f8fc;
+      color: #172033;
+    }
+
+    /* NAVBAR */
+
+    nav {
+      height: 72px;
+      background: #ffffff;
+      border-bottom: 1px solid #e7eaf0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 7%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      color: #111827;
+    }
+
+    .logo span {
+      color: #2563eb;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #4b5563;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: #2563eb;
+    }
+
+    .start-btn {
+      background: #2563eb;
+      color: white !important;
+      padding: 11px 19px;
+      border-radius: 10px;
+    }
+
+    /* HERO */
+
+    .hero {
+      padding: 65px 7% 50px;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(37,99,235,.10), transparent 30%),
+        radial-gradient(circle at 90% 80%, rgba(124,58,237,.10), transparent 30%),
+        #ffffff;
+    }
+
+    .hero-content {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #eef4ff;
+      color: #2563eb;
+      padding: 8px 14px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .6px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 58px);
+      line-height: 1.1;
+      margin-bottom: 15px;
+      letter-spacing: -1.5px;
+    }
+
+    .hero h1 span {
+      color: #2563eb;
+    }
+
+    .hero p {
+      max-width: 680px;
+      color: #667085;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* MAIN */
+
+    .main {
+      max-width: 900px;
+      margin: auto;
+      padding: 45px 7% 70px;
+    }
+
+    /* EXAM SELECT */
+
+    .exam-selector {
+      background: white;
+      border: 1px solid #e5e9f0;
+      border-radius: 18px;
+      padding: 25px;
+      margin-bottom: 25px;
+    }
+
+    .exam-selector h2 {
+      font-size: 21px;
+      margin-bottom: 15px;
+    }
+
+    .exam-buttons {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .exam-btn {
+      border: 1px solid #dfe4ec;
+      background: #ffffff;
+      padding: 13px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 700;
+      color: #374151;
+      transition: .2s;
+    }
+
+    .exam-btn:hover,
+    .exam-btn.active {
+      background: #2563eb;
+      border-color: #2563eb;
+      color: white;
+    }
+
+    /* QUIZ CARD */
+
+    .quiz-card {
+      background: white;
+      border: 1px solid #e5e9f0;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 12px 30px rgba(20,30,50,.05);
+    }
+
+    .quiz-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      color: #667085;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .progress {
+      width: 100%;
+      height: 7px;
+      background: #edf0f5;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 28px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: #2563eb;
+      transition: .3s;
+    }
+
+    .question {
+      font-size: 23px;
+      line-height: 1.45;
+      margin-bottom: 25px;
+    }
+
+    .options {
+      display: grid;
+      gap: 12px;
+    }
+
+    .option {
+      width: 100%;
+      text-align: left;
+      background: #ffffff;
+      border: 1px solid #dfe4ec;
+      padding: 15px 17px;
+      border-radius: 11px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      color: #374151;
+      transition: .2s;
+    }
+
+    .option:hover {
+      border-color: #2563eb;
+      background: #f5f8ff;
+    }
+
+    .option.correct {
+      background: #ecfdf3;
+      border-color: #16a34a;
+      color: #15803d;
+    }
+
+    .option.wrong {
+      background: #fff1f2;
+      border-color: #dc2626;
+      color: #b91c1c;
+    }
+
+    .option.disabled {
+      cursor: default;
+    }
+
+    /* NEXT BUTTON */
+
+    .quiz-actions {
+      margin-top: 25px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .next-btn {
+      border: none;
+      background: #2563eb;
+      color: white;
+      padding: 13px 24px;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+      display: none;
+    }
+
+    .next-btn:hover {
+      background: #1d4ed8;
+    }
+
+    /* RESULT */
+
+    .result {
+      display: none;
+      text-align: center;
+      padding: 20px 10px;
+    }
+
+    .result-icon {
+      font-size: 55px;
+      margin-bottom: 12px;
+    }
+
+    .result h2 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .score {
+      font-size: 48px;
+      font-weight: 800;
+      color: #2563eb;
+      margin: 15px 0;
+    }
+
+    .result p {
+      color: #667085;
+      margin-bottom: 22px;
+    }
+
+    .restart-btn {
+      border: none;
+      background: #111827;
+      color: white;
+      padding: 13px 25px;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: white;
+      border-top: 1px solid #e7eaf0;
+      text-align: center;
+      padding: 28px 20px;
+      color: #7b8494;
+      font-size: 13px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 650px) {
+
+      nav {
+        padding: 0 5%;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 45px 5%;
+      }
+
+      .main {
+        padding: 35px 5% 55px;
+      }
+
+      .exam-buttons {
+        grid-template-columns: 1fr;
+      }
+
+      .quiz-card {
+        padding: 22px;
+      }
+
+      .question {
+        font-size: 19px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+
+    <div class="logo">
+      PRASAD'S <span>EDUHUB</span>
+    </div>
+
+    <div class="nav-links">
+
+      <a href="index.html">Home</a>
+
+      <a href="courses.html">Courses</a>
+
+      <a href="lectures.html">Lectures</a>
+
+      <a href="notes.html">Notes</a>
+
+      <a href="quiz.html">MCQ Quiz</a>
+
+      <a href="courses.html" class="start-btn">
+        Start Learning
+      </a>
+
+    </div>
+
+  </nav>
+
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <div class="badge">
+        UPSC • MPSC • BANKING
+      </div>
+
+      <h1>
+        Test Your
+        <span>Knowledge.</span>
+      </h1>
+
+      <p>
+        Practice exam-oriented multiple choice questions,
+        check your answers instantly and improve your preparation.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- MAIN -->
+
+  <main class="main">
+
+    <!-- EXAM SELECTOR -->
+
+    <div class="exam-selector">
+
+      <h2>
+        Choose Your Exam
+      </h2>
+
+      <div class="exam-buttons">
+
+        <button
+          class="exam-btn active"
+          onclick="selectExam('UPSC', this)"
+        >
+          UPSC
+        </button>
+
+        <button
+          class="exam-btn"
+          onclick="selectExam('MPSC', this)"
+        >
+          MPSC
+        </button>
+
+        <button
+          class="exam-btn"
+          onclick="selectExam('Banking', this)"
+        >
+          Banking
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- QUIZ -->
+
+    <div class="quiz-card" id="quizCard">
+
+      <div class="quiz-top">
+
+        <span id="examName">
+          UPSC Quiz
+        </span>
+
+        <span id="questionNumber">
+          Question 1 / 5
+        </span>
+
+      </div>
+
+
+      <div class="progress">
+
+        <div
+          class="progress-bar"
+          id="progressBar"
+        ></div>
+
+      </div>
+
+
+      <h2
+        class="question"
+        id="question"
+      ></h2>
+
+
+      <div
+        class="options"
+        id="options"
+      ></div>
+
+
+      <div class="quiz-actions">
+
+        <button
+          class="next-btn"
+          id="nextBtn"
+          onclick="nextQuestion()"
+        >
+          Next Question →
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- RESULT -->
+
+    <div class="quiz-card result" id="result">
+
+      <div class="result-icon">
+        🎉
+      </div>
+
+      <h2>
+        Quiz Completed!
+      </h2>
+
+      <div
+        class="score"
+        id="score"
+      >
+        0 / 5
+      </div>
+
+      <p id="resultMessage">
+        Keep practicing and improve your score.
+      </p>
+
+      <button
+        class="restart-btn"
+        onclick="restartQuiz()"
+      >
+        🔄 Try Again
+      </button>
+
+    </div>
+
+  </main>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    © 2026 PRASAD'S EDUHUB.
+    One Hub. Every Exam. Free for Everyone.
+
+  </footer>
+
+
+  <script>
+
+    const quizData = {
+
+      UPSC: [
+
+        {
+          question: "Which Article of the Indian Constitution deals with Fundamental Rights?",
+          options: [
+            "Article 12–35",
+            "Article 36–51",
+            "Article 52–78",
+            "Article 79–122"
+          ],
+          answer: 0
+        },
+
+        {
+          question: "Who is known as the Father of the Indian Constitution?",
+          options: [
+            "Mahatma Gandhi",
+            "Dr. B. R. Ambedkar",
+            "Jawaharlal Nehru",
+            "Sardar Patel"
+          ],
+          answer: 1
+        },
+
+        {
+          question: "Which is the largest planet in our Solar System?",
+          options: [
+            "Earth",
+            "Saturn",
+            "Jupiter",
+            "Mars"
+          ],
+          answer: 2
+        },
+
+        {
+          question: "The Tropic of Cancer passes through how many Indian states?",
+          options: [
+            "6",
+            "7",
+            "8",
+            "9"
+          ],
+          answer: 2
+        },
+
+        {
+          question: "Which institution replaced the Planning Commission?",
+          options: [
+            "Finance Commission",
+            "NITI Aayog",
+            "RBI",
+            "SEBI"
+          ],
+          answer: 1
+        }
+
+      ],
+
+
+      MPSC: [
+
+        {
+          question: "What is the capital of Maharashtra?",
+          options: [
+            "Pune",
+            "Nagpur",
+            "Mumbai",
+            "Nashik"
+          ],
+          answer: 2
+        },
+
+        {
+          question: "Which river is known as the lifeline of Maharashtra?",
+          options: [
+            "Godavari",
+            "Krishna",
+            "Narmada",
+            "Tapi"
+          ],
+          answer: 0
+        },
+
+        {
+          question: "Who founded the Maratha Empire?",
+          options: [
+            "Chhatrapati Shivaji Maharaj",
+            "Sambhaji Maharaj",
+            "Bajirao I",
+            "Balaji Vishwanath"
+          ],
+          answer: 0
+        },
+
+        {
+          question: "Which is the highest peak in Maharashtra?",
+          options: [
+            "Kalsubai",
+            "Harishchandragad",
+            "Toranā",
+            "Rajgad"
+          ],
+          answer: 0
+        },
+
+        {
+          question: "Which language is primarily spoken in Maharashtra?",
+          options: [
+            "Hindi",
+            "Marathi",
+            "Gujarati",
+            "Kannada"
+          ],
+          answer: 1
+        }
+
+      ],
+
+
+      Banking: [
+
+        {
+          question: "What does RBI stand for?",
+          options: [
+            "Reserve Bank of India",
+            "Regional Bank of India",
+            "Reserve Banking Institution",
+            "Rural Bank of India"
+          ],
+          answer: 0
+        },
+
+        {
+          question: "What is the full form of ATM?",
+          options: [
+            "Automatic Transfer Machine",
+            "Automated Teller Machine",
+            "Automated Transaction Method",
+            "Account Transfer Machine"
+          ],
+          answer: 1
+        },
+
+        {
+          question: "Which institution is the central bank of India?",
+          options: [
+            "SBI",
+            "SEBI",
+            "RBI",
+            "NABARD"
+          ],
+          answer: 2
+        },
+
+        {
+          question: "What does EMI stand for?",
+          options: [
+            "Equal Monthly Investment",
+            "Equated Monthly Instalment",
+            "Electronic Money Index",
+            "Estimated Monthly Income"
+          ],
+          answer: 1
+        },
+
+        {
+          question: "Which of the following is a public sector bank?",
+          options: [
+            "State Bank of India",
+            "HDFC Bank",
+            "ICICI Bank",
+            "Axis Bank"
+          ],
+          answer: 0
+        }
+
+      ]
+
+    };
+
+
+    let currentExam = "UPSC";
+    let currentQuestion = 0;
+    let score = 0;
+    let answered = false;
+
+
+    function loadQuestion() {
+
+      const data = quizData[currentExam][currentQuestion];
+
+      document.getElementById("examName").textContent =
+        currentExam + " Quiz";
+
+      document.getElementById("questionNumber").textContent =
+        "Question " +
+        (currentQuestion + 1) +
+        " / " +
+        quizData[currentExam].length;
+
+      document.getElementById("question").textContent =
+        data.question;
+
+      document.getElementById("progressBar").style.width =
+        ((currentQuestion + 1) /
+          quizData[currentExam].length * 100) + "%";
+
+
+      const optionsContainer =
+        document.getElementById("options");
+
+      optionsContainer.innerHTML = "";
+
+      document.getElementById("nextBtn").style.display =
+        "none";
+
+      answered = false;
+
+
+      data.options.forEach((option, index) => {
+
+        const button = document.createElement("button");
+
+        button.className = "option";
+
+        button.textContent =
+          String.fromCharCode(65 + index) +
+          ". " +
+          option;
+
+        button.onclick = function () {
+
+          selectAnswer(index, button);
+
+        };
+
+        optionsContainer.appendChild(button);
+
+      });
+
+    }
+
+
+    function selectAnswer(index, selectedButton) {
+
+      if (answered) return;
+
+      answered = true;
+
+      const data =
+        quizData[currentExam][currentQuestion];
+
+      const buttons =
+        document.querySelectorAll(".option");
+
+
+      buttons.forEach((button, i) => {
+
+        button.classList.add("disabled");
+
+        if (i === data.answer) {
+
+          button.classList.add("correct");
+
+        }
+
+      });
+
+
+      if (index === data.answer) {
+
+        score++;
+
+      } else {
+
+        selectedButton.classList.add("wrong");
+
+      }
+
+
+      document.getElementById("nextBtn").style.display =
+        "block";
+
+    }
+
+
+    function nextQuestion() {
+
+      currentQuestion++;
+
+      if (
+        currentQuestion >=
+        quizData[currentExam].length
+      ) {
+
+        showResult();
+
+      } else {
+
+        loadQuestion();
+
+      }
+
+    }
+
+
+    function showResult() {
+
+      document.getElementById("quizCard").style.display =
+        "none";
+
+      document.getElementById("result").style.display =
+        "block";
+
+      const total =
+        quizData[currentExam].length;
+
+      document.getElementById("score").textContent =
+        score + " / " + total;
+
+
+      let message = "";
+
+      const percentage =
+        (score / total) * 100;
+
+
+      if (percentage === 100) {
+
+        message =
+          "Excellent! Perfect score. 🔥";
+
+      } else if (percentage >= 60) {
+
+        message =
+          "Good job! Keep practicing to improve further. 💪";
+
+      } else {
+
+        message =
+          "Keep learning and try the quiz again. 📚";
+
+      }
+
+
+      document.getElementById("resultMessage").textContent =
+        message;
+
+    }
+
+
+    function restartQuiz() {
+
+      currentQuestion = 0;
+
+      score = 0;
+
+      document.getElementById("result").style.display =
+        "none";
+
+      document.getElementById("quizCard").style.display =
+        "block";
+
+      loadQuestion();
+
+    }
+
+
+    function selectExam(exam, button) {
+
+      currentExam = exam;
+
+      currentQuestion = 0;
+
+      score = 0;
+
+      document
+        .querySelectorAll(".exam-btn")
+        .forEach(btn => {
+          btn.classList.remove("active");
+        });
+
+      button.classList.add("active");
+
+      document.getElementById("result").style.display =
+        "none";
+
+      document.getElementById("quizCard").style.display =
+        "block";
+
+      loadQuestion();
+
+    }
+
+
+    loadQuestion();
+
+  </script>
+
+</body>
+</html>

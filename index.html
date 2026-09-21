@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>PRASAD'S EDUHUB | One Hub. Every Exam.</title>
+
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: #f7f9fc;
+      color: #172033;
+    }
+
+    /* NAVBAR */
+
+    nav {
+      height: 72px;
+      background: #ffffff;
+      border-bottom: 1px solid #e7eaf0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 7%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      color: #111827;
+    }
+
+    .logo span {
+      color: #2563eb;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #4b5563;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: #2563eb;
+    }
+
+    .start-btn {
+      background: #2563eb;
+      color: white !important;
+      padding: 11px 19px;
+      border-radius: 10px;
+    }
+
+    /* HERO */
+
+    .hero {
+      padding: 90px 7% 80px;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(37,99,235,.11), transparent 30%),
+        radial-gradient(circle at 90% 80%, rgba(124,58,237,.10), transparent 30%),
+        #ffffff;
+    }
+
+    .hero-content {
+      max-width: 1150px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #eef4ff;
+      color: #2563eb;
+      padding: 8px 14px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .7px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 6vw, 70px);
+      line-height: 1.04;
+      letter-spacing: -2.5px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: #2563eb;
+    }
+
+    .hero p {
+      max-width: 680px;
+      color: #667085;
+      font-size: 17px;
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+      text-decoration: none;
+      padding: 14px 22px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .primary-btn {
+      background: #2563eb;
+      color: white;
+    }
+
+    .secondary-btn {
+      background: white;
+      border: 1px solid #dfe4ec;
+      color: #374151;
+    }
+
+    .primary-btn:hover {
+      background: #1d4ed8;
+    }
+
+    .secondary-btn:hover {
+      border-color: #2563eb;
+      color: #2563eb;
+    }
+
+    /* HERO VISUAL */
+
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+    }
+
+    .edu-orb {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 35% 30%, #ffffff, transparent 15%),
+        linear-gradient(145deg, #2563eb, #4f46e5, #111827);
+      box-shadow:
+        0 30px 70px rgba(37,99,235,.25),
+        inset -20px -20px 40px rgba(0,0,0,.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: rotate(-8deg);
+    }
+
+    .orb-inner {
+      width: 210px;
+      height: 210px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      padding: 30px;
+      transform: rotate(8deg);
+    }
+
+    .orb-inner h2 {
+      font-size: 26px;
+      line-height: 1.15;
+    }
+
+    .orb-inner small {
+      display: block;
+      margin-top: 10px;
+      color: #dbe4ff;
+      font-size: 11px;
+    }
+
+    /* COMMON */
+
+    .section {
+      max-width: 1150px;
+      margin: auto;
+      padding: 70px 7%;
+    }
+
+    .section-heading {
+      margin-bottom: 30px;
+    }
+
+    .section-heading h2 {
+      font-size: 31px;
+      margin-bottom: 8px;
+    }
+
+    .section-heading p {
+      color: #667085;
+      font-size: 14px;
+    }
+
+    /* EXAMS */
+
+    .exam-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .exam-card {
+      background: white;
+      border: 1px solid #e5e9f0;
+      border-radius: 17px;
+      padding: 25px;
+      transition: .25s;
+    }
+
+    .exam-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(20,30,50,.08);
+    }
+
+    .exam-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: #eef4ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 18px;
+    }
+
+    .exam-card h3 {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .exam-card p {
+      color: #667085;
+      font-size: 13px;
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    .exam-link {
+      text-decoration: none;
+      color: #2563eb;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    /* RESOURCES */
+
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 17px;
+    }
+
+    .resource-card {
+      background: white;
+      border: 1px solid #e5e9f0;
+      border-radius: 15px;
+      padding: 22px;
+      text-decoration: none;
+      color: #172033;
+      transition: .25s;
+    }
+
+    .resource-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(20,30,50,.07);
+    }
+
+    .resource-card .icon {
+      font-size: 26px;
+      margin-bottom: 14px;
+    }
+
+    .resource-card h3 {
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .resource-card p {
+      color: #667085;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    /* WHY */
+
+    .why-section {
+      background: #ffffff;
+    }
+
+    .why-grid {
+      max-width: 1150px;
+      margin: auto;
+      padding: 70px 7%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .why-text h2 {
+      font-size: 35px;
+      margin-bottom: 15px;
+    }
+
+    .why-text p {
+      color: #667085;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 15px;
+    }
+
+    .feature {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      background: #f7f9fc;
+      padding: 17px;
+      border-radius: 12px;
+    }
+
+    .feature-icon {
+      font-size: 21px;
+    }
+
+    .feature h3 {
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    .feature p {
+      color: #667085;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    /* FOUNDER */
+
+    .founder-card {
+      background: linear-gradient(135deg, #111827, #1e3a8a);
+      border-radius: 22px;
+      padding: 45px;
+      color: white;
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .founder-avatar {
+      width: 115px;
+      height: 115px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #ffffff, #cbd5e1);
+      color: #1e3a8a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 34px;
+      font-weight: 900;
+    }
+
+    .founder-card .role {
+      color: #93c5fd;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .5px;
+      margin-bottom: 8px;
+    }
+
+    .founder-card h2 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .founder-card h4 {
+      color: #dbe4ff;
+      font-size: 13px;
+      margin-bottom: 15px;
+    }
+
+    .founder-card p {
+      color: #dbe4ff;
+      font-size: 13px;
+      line-height: 1.7;
+      max-width: 750px;
+    }
+
+    /* CTA */
+
+    .cta {
+      text-align: center;
+      background: #eef4ff;
+      border-radius: 22px;
+      padding: 55px 25px;
+    }
+
+    .cta h2 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .cta p {
+      color: #667085;
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #ffffff;
+      border-top: 1px solid #e7eaf0;
+      text-align: center;
+      padding: 30px 20px;
+      color: #7b8494;
+      font-size: 13px;
+    }
+
+
+    /* ABOUT */
+
+    .about-section {
+      background: #ffffff;
+    }
+
+    .about-card {
+      background: linear-gradient(135deg, #ffffff, #f4f7ff);
+      border: 1px solid #e1e7f2;
+      border-radius: 24px;
+      padding: 42px;
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 45px;
+      align-items: center;
+      box-shadow: 0 18px 45px rgba(20,30,50,.05);
+    }
+
+    .about-badge {
+      display: inline-block;
+      background: #eef4ff;
+      color: #2563eb;
+      padding: 7px 12px;
+      border-radius: 50px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .7px;
+      margin-bottom: 14px;
+    }
+
+    .about-left h2 {
+      font-size: 34px;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    .about-left p {
+      color: #667085;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .about-message {
+      background: #ffffff;
+      border-left: 4px solid #2563eb;
+      border-radius: 14px;
+      padding: 25px 28px;
+      box-shadow: 0 10px 30px rgba(20,30,50,.06);
+    }
+
+    .about-message .quote {
+      font-size: 27px;
+      color: #2563eb;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .about-message p {
+      color: #475467;
+      font-size: 14px;
+      line-height: 1.85;
+    }
+
+    .about-sign {
+      margin-top: 17px;
+      color: #172033 !important;
+      font-weight: 800;
+    }
+
+    /* REVIEWS */
+
+    .reviews-section {
+      background: #f7f9fc;
+    }
+
+    .review-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 25px;
+      margin-bottom: 30px;
+    }
+
+    .review-rating {
+      background: white;
+      border: 1px solid #e5e9f0;
+      border-radius: 14px;
+      padding: 12px 18px;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .review-rating strong {
+      display: block;
+      font-size: 22px;
+      color: #172033;
+    }
+
+    .review-rating span {
+      font-size: 11px;
+      color: #667085;
+    }
+
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .review-card {
+      background: white;
+      border: 1px solid #e5e9f0;
+      border-radius: 17px;
+      padding: 25px;
+      min-height: 185px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .review-stars {
+      color: #f59e0b;
+      letter-spacing: 2px;
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+
+    .review-card p {
+      color: #667085;
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .review-author {
+      margin-top: 20px;
+      font-size: 12px;
+      font-weight: 800;
+      color: #172033;
+    }
+
+    .review-empty {
+      border: 1px dashed #cbd5e1;
+      background: #ffffff;
+      text-align: center;
+    }
+
+    .review-empty .review-stars {
+      color: #94a3b8;
+    }
+
+    .review-button {
+      display: inline-block;
+      margin-top: 22px;
+      padding: 12px 19px;
+      border-radius: 10px;
+      background: #2563eb;
+      color: white;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .review-button:hover {
+      background: #1d4ed8;
+    }
+
+    .review-note {
+      margin-top: 15px;
+      color: #7b8494;
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 900px) {
+
+      .hero-content {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        display: none;
+      }
+
+      .exam-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .resource-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+    @media (max-width: 650px) {
+
+      nav {
+        padding: 0 5%;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 55px 5%;
+      }
+
+      .section {
+        padding: 50px 5%;
+      }
+
+      .resource-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .founder-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 30px 22px;
+      }
+
+      .founder-avatar {
+        margin: auto;
+      }
+
+      .why-grid {
+        padding: 50px 5%;
+      }
+
+      .about-card {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 30px 24px;
+      }
+
+      .review-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .review-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+
+      .cta {
+        padding: 40px 20px;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- NAVBAR -->
+
+  <nav>
+
+    <div class="logo">
+      PRASAD'S <span>EDUHUB</span>
+    </div>
+
+    <div class="nav-links">
+
+      <a href="index.html">Home</a>
+
+      <a href="courses.html">Courses</a>
+
+      <a href="lectures.html">Lectures</a>
+
+      <a href="notes.html">Notes</a>
+
+      <a href="quiz.html">MCQ Quiz</a>
+
+      <a href="current-affairs.html">Current Affairs</a>
+      <a href="#about">About</a>
+      <a href="#reviews">Reviews</a>
+
+      <a href="courses.html" class="start-btn">
+        Start Learning
+      </a>
+
+    </div>
+
+  </nav>
+
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <div>
+
+        <div class="badge">
+          UPSC • MPSC • BANKING
+        </div>
+
+        <h1>
+          Your Preparation.
+          <span>Our Platform.</span>
+        </h1>
+
+        <p>
+          PRASAD'S EDUHUB is a free learning platform designed
+          to bring exam preparation, lectures, notes, MCQs and
+          current affairs together in one simple place.
+        </p>
+
+        <div class="hero-buttons">
+
+          <a href="courses.html" class="primary-btn">
+            Explore Courses →
+          </a>
+
+          <a href="quiz.html" class="secondary-btn">
+            Try MCQ Quiz
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="hero-visual">
+
+        <div class="edu-orb">
+
+          <div class="orb-inner">
+
+            <div>
+
+              <h2>
+                ONE HUB.
+                <br>
+                EVERY EXAM.
+              </h2>
+
+              <small>
+                Free Learning Platform
+              </small>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- EXAMS -->
+
+  <section class="section">
+
+    <div class="section-heading">
+
+      <h2>
+        Choose Your Exam
+      </h2>
+
+      <p>
+        Start your preparation from the exam you are targeting.
+      </p>
+
+    </div>
+
+
+    <div class="exam-grid">
+
+
+      <div class="exam-card">
+
+        <div class="exam-icon">
+          🇮🇳
+        </div>
+
+        <h3>
+          UPSC
+        </h3>
+
+        <p>
+          Civil Services preparation with subject-wise
+          lectures, notes and practice resources.
+        </p>
+
+        <a href="upsc.html" class="exam-link">
+          Explore UPSC →
+        </a>
+
+      </div>
+
+
+      <div class="exam-card">
+
+        <div class="exam-icon">
+          🏛️
+        </div>
+
+        <h3>
+          MPSC
+        </h3>
+
+        <p>
+          Rajyaseva and Combined examination preparation
+          organized subject-wise.
+        </p>
+
+        <a href="mpsc.html" class="exam-link">
+          Explore MPSC →
+        </a>
+
+      </div>
+
+
+      <div class="exam-card">
+
+        <div class="exam-icon">
+          🏦
+        </div>
+
+        <h3>
+          Banking
+        </h3>
+
+        <p>
+          IBPS, SBI and banking examination resources
+          including aptitude and reasoning.
+        </p>
+
+        <a href="banking.html" class="exam-link">
+          Explore Banking →
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- RESOURCES -->
+
+  <section class="section">
+
+    <div class="section-heading">
+
+      <h2>
+        Everything You Need
+      </h2>
+
+      <p>
+        Your preparation tools, organized in one place.
+      </p>
+
+    </div>
+
+
+    <div class="resource-grid">
+
+
+      <a href="lectures.html" class="resource-card">
+
+        <div class="icon">
+          🎥
+        </div>
+
+        <h3>
+          Video Lectures
+        </h3>
+
+        <p>
+          Find topic-wise learning videos.
+        </p>
+
+      </a>
+
+
+      <a href="notes.html" class="resource-card">
+
+        <div class="icon">
+          📚
+        </div>
+
+        <h3>
+          Free Notes
+        </h3>
+
+        <p>
+          Organized study material for revision.
+        </p>
+
+      </a>
+
+
+      <a href="quiz.html" class="resource-card">
+
+        <div class="icon">
+          🧠
+        </div>
+
+        <h3>
+          MCQ Quiz
+        </h3>
+
+        <p>
+          Test your knowledge with practice questions.
+        </p>
+
+      </a>
+
+
+      <a href="current-affairs.html" class="resource-card">
+
+        <div class="icon">
+          📰
+        </div>
+
+        <h3>
+          Current Affairs
+        </h3>
+
+        <p>
+          Stay updated with exam-relevant topics.
+        </p>
+
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- WHY EDUHUB -->
+
+  <section class="why-section">
+
+    <div class="why-grid">
+
+      <div class="why-text">
+
+        <h2>
+          Why PRASAD'S EDUHUB?
+        </h2>
+
+        <p>
+          Competitive exam preparation can become confusing
+          when resources are scattered across different
+          platforms. EDUHUB brings the important preparation
+          tools together in a clean and simple learning space.
+        </p>
+
+      </div>
+
+
+      <div class="feature-list">
+
+
+        <div class="feature">
+
+          <div class="feature-icon">
+            🆓
+          </div>
+
+          <div>
+
+            <h3>
+              Free Access
+            </h3>
+
+            <p>
+              Learning resources are designed to remain
+              accessible to students.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="feature">
+
+          <div class="feature-icon">
+            📱
+          </div>
+
+          <div>
+
+            <h3>
+              Mobile Friendly
+            </h3>
+
+            <p>
+              Study comfortably from mobile, tablet or desktop.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="feature">
+
+          <div class="feature-icon">
+            🎯
+          </div>
+
+          <div>
+
+            <h3>
+              Exam Focused
+            </h3>
+
+            <p>
+              Resources are organized around competitive
+              examination preparation.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="feature">
+
+          <div class="feature-icon">
+            ⚡
+          </div>
+
+          <div>
+
+            <h3>
+              Simple & Organized
+            </h3>
+
+            <p>
+              Find lectures, notes, quizzes and current
+              affairs without unnecessary complexity.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ABOUT / WHY I BUILT EDUHUB -->
+
+  <section class="section about-section" id="about">
+
+    <div class="about-card">
+
+      <div class="about-left">
+
+        <div class="about-badge">
+          FROM THE FOUNDER
+        </div>
+
+        <h2>
+          Why I Built<br>
+          <span style="color:#2563eb;">PRASAD'S EDUHUB</span>
+        </h2>
+
+        <p>
+          I wanted to create a learning space where students can
+          find useful exam preparation resources without unnecessary
+          barriers or confusion.
+        </p>
+
+      </div>
+
+      <div class="about-message">
+
+        <div class="quote">“</div>
+
+        <p>
+          I built PRASAD'S EDUHUB with a simple thought — preparation
+          should be easier to access and easier to organize. Students
+          preparing for UPSC, MPSC and Banking examinations often have
+          to search across many different places for lectures, notes,
+          practice questions and current affairs. I wanted to bring
+          these things together in one simple platform.
+
+          <br><br>
+
+          This website is my small effort to make learning more
+          accessible. There is no login, no subscription and no
+          premium lock. My goal is to keep building EDUHUB into a
+          useful platform that students can use throughout their
+          preparation journey.
+
+          <br><br>
+
+          This is not just a website I created — it is a platform I
+          want to keep improving with the needs and feedback of
+          students.
+        </p>
+
+        <p class="about-sign">
+          — Prasad Sunil Salwe<br>
+          Founder, PRASAD'S EDUHUB
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- REVIEWS -->
+
+  <section class="section reviews-section" id="reviews">
+
+    <div class="review-header">
+
+      <div class="section-heading" style="margin-bottom:0;">
+
+        <h2>
+          What Learners Say
+        </h2>
+
+        <p>
+          Your experience can help us make EDUHUB better.
+        </p>
+
+      </div>
+
+      <div class="review-rating">
+        <strong>★★★★★</strong>
+        <span>Student feedback matters</span>
+      </div>
+
+    </div>
+
+
+    <div class="review-grid">
+
+      <div class="review-card review-empty">
+
+        <div>
+
+          <div class="review-stars">
+            ★★★★★
+          </div>
+
+          <p>
+            Your review could be here. Share your experience
+            after using PRASAD'S EDUHUB.
+          </p>
+
+        </div>
+
+        <div class="review-author">
+          — Future EDUHUB Learner
+        </div>
+
+      </div>
+
+
+      <div class="review-card review-empty">
+
+        <div>
+
+          <div class="review-stars">
+            ★★★★★
+          </div>
+
+          <p>
+            Tell us what you liked, what helped you and
+            what you would like us to improve.
+          </p>
+
+        </div>
+
+        <div class="review-author">
+          — Your Feedback
+        </div>
+
+      </div>
+
+
+      <div class="review-card review-empty">
+
+        <div>
+
+          <div class="review-stars">
+            ★★★★★
+          </div>
+
+          <p>
+            Every genuine student review can help shape
+            the next version of PRASAD'S EDUHUB.
+          </p>
+
+        </div>
+
+        <div class="review-author">
+          — EDUHUB Community
+        </div>
+
+      </div>
+
+    </div>
+
+    <div style="text-align:center;">
+
+      <a
+        href="mailto:prasadeduhub@gmail.com?subject=PRASAD'S%20EDUHUB%20Review"
+        class="review-button"
+      >
+        ✍️ Share Your Review
+      </a>
+
+      <p class="review-note">
+        Reviews shown here will be added only from genuine learner feedback.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOUNDER -->
+
+  <section class="section">
+
+    <div class="founder-card">
+
+      <div class="founder-avatar">
+        PS
+      </div>
+
+      <div>
+
+        <div class="role">
+          FOUNDER & CEO
+        </div>
+
+        <h2>
+          Prasad Sunil Salwe
+        </h2>
+
+        <h4>
+          Founder • Entrepreneur • Technology Enthusiast
+        </h4>
+
+        <p>
+          PRASAD'S EDUHUB is built with the vision of creating
+          a simple, accessible and organized learning platform
+          for competitive exam aspirants. With a background in
+          Electronics & Telecommunication Engineering and
+          interests across technology, AI, programming and
+          digital solutions, Prasad aims to bring useful
+          learning resources together under one platform.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CTA -->
+
+  <section class="section">
+
+    <div class="cta">
+
+      <h2>
+        Start Learning Today.
+      </h2>
+
+      <p>
+        Choose your exam and begin your preparation.
+      </p>
+
+      <a href="courses.html" class="primary-btn">
+        Start Learning →
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <p>
+      © 2026 PRASAD'S EDUHUB.
+      One Hub. Every Exam. Free for Everyone.
+    </p>
+
+    <p style="margin-top:8px;">
+      Founded & Built by Prasad Sunil Salwe
+    </p>
+
+  </footer>
+
+
+</body>
+</html>
